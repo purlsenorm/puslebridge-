@@ -36,7 +36,7 @@ const blockscoutClient = axios.create({
 /**
  * Make RPC call to PulseChain
  */
-async function rpcCall(method: string, params: any[] = []) {
+async function rpcCall(method: string, params: unknown[] = []) {
   const response = await rpcClient.post('', {
     jsonrpc: '2.0',
     id: 1,

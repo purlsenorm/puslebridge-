@@ -1,8 +1,8 @@
 import { http, createConfig } from 'wagmi';
-import { pulsechain } from 'wagmi/chains';
-import { injected, walletConnect } from 'wagmi/connectors';
+import { injected } from 'wagmi/connectors';
+import type { Chain } from 'wagmi/chains';
 
-// Define PulseChain if not available in wagmi/chains
+// Define PulseChain chain configuration
 export const pulsechainConfig = {
   id: 369,
   name: 'PulseChain',
@@ -25,10 +25,10 @@ export const pulsechainConfig = {
       url: 'https://scan.pulsechain.com',
     },
   },
-} as const;
+} as const satisfies Chain;
 
 export const config = createConfig({
-  chains: [pulsechainConfig as any],
+  chains: [pulsechainConfig],
   connectors: [
     injected(),
     // Add WalletConnect if you have a project ID
